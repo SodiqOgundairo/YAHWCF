@@ -1,31 +1,25 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
+name: Deploy to Server
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ main ]  # Change "main" to your production branch if different
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  deploy:
+    runs-on: ubuntu-latest  # Replace with a specific runner if needed
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v3
+
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.1  # Or another SSH deployment action
+        with:
+          host: ${{ secrets.SERVER_IP_OR_HOSTNAME }}  # Replace with your server details
+          username: ${{ secrets.SERVER_USERNAME }}  # Replace with your server username
+          key: ${{ secrets.DEPLOY_KEY }}  # Use the secret if you created one
+          port: 22  # Replace with your server's SSH port if different
+          script: |  # Deployment commands for your project
+            cd public_html  # Replace with the target directory
+            rm -rf dist/*  # Remove existing files (optional, be cautious)
+            cp -r ./dist/* .  # Copy the dist folder contents to the server
+            # Add any additional deployment commands (e.g., npm install, server restart)
+
