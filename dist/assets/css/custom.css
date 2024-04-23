@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+*::-webkit-scrollbar {
+    width: 8px; /* Adjust width as needed */
+    height: 8px; /* Adjust height as needed */
+  }
+  
+*::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Adjust track color */
+  }
+  
+*::-webkit-scrollbar-thumb {
+    background-color: #999; /* Adjust thumb color */
+    border-radius: 6px; /* Adjust border-radius as needed */
+  }
+
+  *:-webkit-scrollbar-thumb:hover {
+    background-color: #777; /* Adjust hover color */
+  }
+  
+
+.hero-bg {
+    background-image: url('../img/herow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+}
+
+.about-bg {
+    background-image: url('../img/about.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover ;
+}
+
+/* .featured-courses{
+    background-image: url('../img/courses-bg.jpg');
+
+} */
+
+
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Adjust width as needed */
+    height: 8px; /* Adjust height as needed */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Adjust track color */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #999; /* Adjust thumb color */
+    border-radius: 6px; /* Adjust border-radius as needed */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #777; /* Adjust hover color */
+  }
+  
+
+  .custom-list li::marker {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: blue;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
