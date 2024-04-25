@@ -3,8 +3,12 @@
 *{
     padding: 0;
     margin: 0;
-}
+  }
+  
+  body {
 
+    background-color: #fafafa;
+  }
 
 *::-webkit-scrollbar {
     width: 8px; /* Adjust width as needed */
