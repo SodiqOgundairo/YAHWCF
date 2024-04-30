@@ -1159,16 +1159,16 @@ input:checked + .toggle-bg {
   margin-bottom: 0.5rem;
 }
 
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mb-3 {
-  margin-bottom: 0.75rem;
 }
 
 .block {
@@ -1223,6 +1223,26 @@ input:checked + .toggle-bg {
   height: 2.25rem;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[80px\] {
+  height: 80px;
+}
+
+.h-\[50px\] {
+  height: 50px;
+}
+
+.h-\[10px\] {
+  height: 10px;
+}
+
+.h-\[250px\] {
+  height: 250px;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -1239,13 +1259,13 @@ input:checked + .toggle-bg {
   width: 16rem;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-fit {
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .max-w-screen-xl {
@@ -1529,9 +1549,19 @@ input:checked + .toggle-bg {
      object-fit: cover;
 }
 
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
 .object-center {
   -o-object-position: center;
      object-position: center;
+}
+
+.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
 }
 
 .p-1 {
@@ -1813,6 +1843,11 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-theme:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(228 169 38 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-600:hover {
