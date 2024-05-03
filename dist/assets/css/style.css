@@ -1223,22 +1223,6 @@ input:checked + .toggle-bg {
   height: 2.25rem;
 }
 
-.h-\[100px\] {
-  height: 100px;
-}
-
-.h-\[80px\] {
-  height: 80px;
-}
-
-.h-\[50px\] {
-  height: 50px;
-}
-
-.h-\[10px\] {
-  height: 10px;
-}
-
 .h-\[250px\] {
   height: 250px;
 }
@@ -1549,19 +1533,9 @@ input:checked + .toggle-bg {
      object-fit: cover;
 }
 
-.object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
-}
-
 .object-center {
   -o-object-position: center;
      object-position: center;
-}
-
-.object-bottom {
-  -o-object-position: bottom;
-     object-position: bottom;
 }
 
 .p-1 {
@@ -1843,11 +1817,6 @@ input:checked + .toggle-bg {
 .hover\:bg-white:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-theme:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(228 169 38 / var(--tw-bg-opacity));
 }
 
 .hover\:text-blue-600:hover {
