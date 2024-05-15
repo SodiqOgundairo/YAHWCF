@@ -1,0 +1,87 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header('Access-Control-Allow-Origin: *');
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "yawhcf";
+
+// Check if the file has been uploaded
+if(isset($_FILES['user-avatar'])) {
+    // File properties
+    $file_name = $_FILES['user-avatar']['name'];
+    $file_tmp = $_FILES['user-avatar']['tmp_name'];
+    $file_size = $_FILES['user-avatar']['size'];
+    $file_error = $_FILES['user-avatar']['error'];
+
+    // File extension
+    $file_ext = strtolower(end(explode('.', $file_name)));
+
+    // Allowed extensions
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if(in_array($file_ext, $allowed)) {
+        if($file_error === 0) {
+            if($file_size <= 2097152) { // 2MB limit
+                // Unique file name
+                $file_new_name = uniqid('', true) . '.' . $file_ext;
+                $file_destination = 'uploads/' . $file_new_name;
+
+                if(move_uploaded_file($file_tmp, $file_destination)) {
+                    // Print success message
+                    echo "File uploaded successfully.";
+
+                    // Form data
+                    $data = json_encode(
+                        array(
+                            "fname" => $_POST['fname'],
+                            'lname' => $_POST['lname'],
+                            'dob' => $_POST['dob'],
+                            'gender' => $_POST['gender'],
+                            'country' => $_POST['country'],
+                            'attending' => $_POST['attending'],
+                            'avatar' => $file_destination // Image path
+                        )
+                    );
+
+                    // Connect to database
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Insert data into database
+                    $sql = 'INSERT INTO reg (data) VALUES (?)';
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param('s', $data);
+
+                    if($stmt->execute()) {
+                        echo '<p>Your data has been added successfully.</p>';
+                        echo '<a href="../../index.html">Go back Home</a>';
+                        
+                        
+                        exit(); // Stop further execution
+                    } else {
+                        echo 'Error adding data: ' . $stmt->error;
+                    }
+
+                    $stmt->close();
+                    $conn->close();
+                } else {
+                    echo "There was an error uploading your file.";
+                }
+            } else {
+                echo "File size exceeds 2MB limit.";
+            }
+        } else {
+            echo "There was an error uploading your file.";
+        }
+    } else {
+        echo "Invalid file type. Only JPG, JPEG, and PNG files are allowed.";
+    }
+} else {
+    echo "No file uploaded.";
+}
+?>
