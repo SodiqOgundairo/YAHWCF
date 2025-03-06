@@ -9,6 +9,7 @@
   body {
 
     background-color: #fafafa;
+    width: 100vw;
   }
 
 *::-webkit-scrollbar {
